@@ -148,10 +148,10 @@ def get_archive_pub_cache_environment(d, pub_cache, flutter_sdk):
     newenv['PUB_CACHE'] = pub_cache
 
     # required for dart: https://github.com/dart-lang/sdk/issues/41560
-    newenv['HOME'] = d.getVar("WORKDIR")
+    #newenv['HOME'] = d.getVar("WORKDIR")
 
     # required for flutter: https://github.com/flutter/flutter/issues/59430
-    newenv['XDG_CONFIG_HOME'] = d.getVar("WORKDIR")
+    #newenv['XDG_CONFIG_HOME'] = d.getVar("WORKDIR")
 
     path = origenv.get('PATH')
     newenv['PATH'] = f'{path}:{flutter_sdk}/bin:{pub_cache}/bin'
@@ -323,7 +323,7 @@ python do_cleanall:append() {
     file = os.path.join(workspace, 'PUB_CACHE_ARCHIVE')
     if not os.path.exists(file):
         return
-    
+
     localfile = ''
     with open(file, 'r') as f:
         localfile = f.read()
@@ -450,7 +450,7 @@ def build_app(d, source_dir, flutter_sdk, pubspec_appname, flutter_application_p
             flutter_app_profile_flags = ''
             flutter_app_vm_profile = 'false'
             if runtime_mode == 'profile':
-                flutter_app_profile_flags = '--track-widget-creation' 
+                flutter_app_profile_flags = '--track-widget-creation'
                 flutter_app_vm_profile = 'true'
 
             flutter_app_debug_flags = ''
